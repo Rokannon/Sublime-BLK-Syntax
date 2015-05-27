@@ -1,0 +1,61 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: BLK Syntax
+scopeName: source.blk
+fileTypes: [blk]
+uuid: 0098dc70-2224-4180-b9f3-0b130a93dd95
+
+patterns:
+
+# Comments
+- name: comment.line.double-slash.blk
+  match: //.*
+- name: comment.block.documentation.blk
+  begin: /\*
+  end: \*/
+
+# Strings
+- name: string.quoted.single.blk
+  begin: \'
+  end: \'
+  patterns:
+  - name: constant.character.escape.blk
+    match: \\\'
+- name: string.quoted.double.blk
+  begin: \"
+  end: \"
+  patterns:
+  - name: constant.character.escape.blk
+    match: \\.
+
+# Numbers
+- name: constant.numeric.blk
+  match: \-?[0-9]+.?[0-9]*
+
+# True/False
+- name: constant.other.blk
+  match: '(yes|no)'
+
+# Parameters
+- name: other.blk
+  match: '([_a-zA-Z][_a-zA-Z0-9\-]*)\s*\:\s*([a-zA-Z][a-zA-Z0-9\-]*)'
+  captures:
+    '1': {name: entity.other.attribute-name.blk}
+    '2': {name: entity.name.tag.blk}
+
+# Include
+- name: other.blk
+  match: '(include)\s+([^\s]+)'
+  captures:
+    '1': {name: keyword.other.blk}
+    '2': {name: string.other.blk}
+
+# Block
+- name: other.blk
+  begin: ([_a-zA-Z][_a-zA-Z0-9\-]*)
+  beginCaptures:
+    '1': {name: entity.name.section.blk}
+  end: \}
+  patterns:
+  - include: $self
+...
