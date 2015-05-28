@@ -29,8 +29,10 @@ patterns:
     match: \\.
 
 # Numbers
-- name: constant.numeric.blk
-  match: \-?[0-9]+.?[0-9]*
+- name: other.blk
+  match: =\s*(\-?[0-9]+\.?[0-9]*)
+  captures:
+    '1': {name: constant.numeric.blk}
 
 # True/False
 - name: other.blk
