@@ -61,5 +61,10 @@ patterns:
     '1': {name: entity.name.section.blk}
   end: \}
   patterns:
+  - name: other.blk
+    match: \{
   - include: $self
+
+- name: invalid.illegal.blk
+  match: '[^\s\n;]'
 ...
