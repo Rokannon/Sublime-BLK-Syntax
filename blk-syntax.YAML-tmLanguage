@@ -16,13 +16,13 @@ patterns:
 
 # Strings
 - name: string.quoted.single.blk
-  begin: \'
+  begin: =\s*\'
   end: \'
   patterns:
   - name: constant.character.escape.blk
-    match: \\\'
+    match: \\.
 - name: string.quoted.double.blk
-  begin: \"
+  begin: =\s*\"
   end: \"
   patterns:
   - name: constant.character.escape.blk
